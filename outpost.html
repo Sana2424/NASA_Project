@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outpost Commander</title>
+<meta name="description" content="Run a Moon or Mars outpost through real NASA space weather. Every watt of power is a trade-off.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TITLE / SETUP ============ -->
+<section id="title" class="screen">
+  <a class="home-link" href="index.html">← AeroPlay home</a>
+  <div class="title-hero">
+    <h1>Outpost <span>Commander</span></h1>
+    <p>You're in charge of a crew of 4 on the Moon or Mars. Power is limited. Air, food and radiation safety all need it. Can you keep your crew safe for <b>20 sols</b> and still do great science?</p>
+  </div>
+
+  <div class="live-sun" id="liveSun">
+    <div class="sun" aria-hidden="true"></div>
+    <div id="liveSunText">Checking the real Sun with NASA's space weather database…</div>
+  </div>
+
+  <h2 class="step-title"><b>1</b>Pick your outpost</h2>
+  <div class="cards" id="sitePicks"></div>
+
+  <h2 class="step-title"><b>2</b>Pick your space weather <span class="chip">real NASA data</span></h2>
+  <p class="src" style="margin-top:-4px">Every flare and radiation storm in your mission really happened. Each sol of your mission matches one real day on the Sun.</p>
+  <div class="wx-list" id="wxPicks"></div>
+
+  <h2 class="step-title"><b>3</b>Pack your lander</h2>
+  <p class="src" style="margin-top:-4px">Rockets can only carry so much. You have <b>4 cargo slots</b>. What you leave behind, you'll have to live without.</p>
+  <div class="cargo-meter" id="cargoMeter"></div>
+  <div class="cargo" id="cargoPicks"></div>
+
+  <p class="center" style="margin-top:22px">
+    <button class="big-btn" id="launchBtn">🚀 Launch mission</button>
+  </p>
+  <p class="center"><button class="ghost" id="howBtn">❓ How to play</button> <button class="ghost" id="aboutBtn">📊 About the NASA data</button></p>
+  <p class="foot">Made for the NASA Space Apps challenge. Photos: NASA/JPL-Caltech/ASU/MSSS (Mars), NASA/GSFC/Arizona State University (Moon). Space weather: NASA DONKI (CCMC).</p>
+</section>
+
+<!-- ============ GAME ============ -->
+<section id="game" class="screen hidden">
+  <div class="hud" id="hud"></div>
+  <div class="layout">
+    <div>
+      <div class="scene" id="scene">
+        <div class="photo" id="scenePhoto"></div>
+        <svg id="sceneSvg" viewBox="0 0 800 400" aria-hidden="true"></svg>
+        <div class="dust" id="sceneDust"></div>
+        <div class="shade" id="sceneShade"></div>
+        <div class="storm" id="sceneStorm"></div>
+        <div class="alert" id="sceneAlert"></div>
+        <div class="tag" id="sceneTag"></div>
+      </div>
+      <div class="gauges" id="gauges"></div>
+      <div class="panel wxpanel" id="wxPanel"></div>
+    </div>
+    <div class="panel" id="powerPanel"></div>
+  </div>
+  <div class="panel" style="margin-top:14px">
+    <h2>📓 Mission log</h2>
+    <ul class="log" id="log"></ul>
+  </div>
+  <p class="center"><button class="ghost" id="howBtn2">❓ How to play</button> <button class="ghost" id="aboutBtn2">📊 About the NASA data</button> <button class="ghost" id="quitBtn">🏠 Main menu</button></p>
+</section>
+
+<div id="modalRoot"></div>
+
+<script src="config.js"></script>
+<script src="data/donki_archive.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

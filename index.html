@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AeroPlay</title>
+<meta name="description" content="Fun games and adventures that teach kids about rockets, space and flight, built on real NASA data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="stars s1"></div><div class="stars s2"></div>
+  <span class="spark" style="left:54%;top:18%"></span>
+  <span class="spark" style="left:74%;top:23%"></span>
+  <span class="spark small" style="left:47%;top:26%"></span>
+  <span class="spark small" style="left:92%;top:12%"></span>
+</div>
+
+<header class="nav">
+  <a class="logo" href="index.html" aria-label="AeroPlay home">
+    <svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+      <defs>
+        <linearGradient id="lgBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9d0ff"/></linearGradient>
+        <linearGradient id="lgFlame" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+      </defs>
+      <path d="M6 50 Q18 38 30 44" stroke="url(#lgFlame)" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <g transform="rotate(45 38 26)">
+        <path d="M38 4 C46 12 47 26 44 38 L32 38 C29 26 30 12 38 4Z" fill="url(#lgBody)"/>
+        <circle cx="38" cy="20" r="4.5" fill="#7c5cff"/>
+        <path d="M32 30 L25 40 L32 38Z M44 30 L51 40 L44 38Z" fill="#7c5cff"/>
+        <path d="M34 39 L38 48 L42 39Z" fill="#ffb547"/>
+      </g>
+    </svg>
+    <span>Aero<b>Play</b></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+  <nav class="links" id="navLinks" aria-label="Main">
+    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="#soon" data-soon>Games</a>
+    <a href="#science">Learn</a>
+    <a href="#crew" class="crew">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="16.5" cy="9" r="2.6"/><path d="M15.5 13.6c3 0 5.5 2 5.5 5"/></g></svg>
+      My Crew
+    </a>
+  </nav>
+  <div class="me">
+    <div class="profile">
+      <button class="stars-pill" id="starsBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="starsMenu" aria-label="Your stars"><span aria-hidden="true">⭐</span> <b id="starCount">0</b></button>
+      <div class="profile-menu stars-menu" id="starsMenu" role="dialog" aria-label="Your stars" hidden>
+        <div class="sm-rank">
+          <span class="sm-badge" id="smBadge">🧑‍🚀</span>
+          <div><p class="pm-label" style="margin:0">Your rank</p><p class="sm-title" id="smRank">Rookie</p></div>
+          <b class="sm-points"><span id="smPoints">0</span> pts</b>
+        </div>
+        <div class="sm-bar" aria-hidden="true"><i id="smBar"></i></div>
+        <p class="sm-next" id="smNext"></p>
+        <p class="pm-label">Earn up to 3 stars per mission</p>
+        <ul class="sm-how">
+          <li><span>⭐</span> Bring the whole crew home safe</li>
+          <li><span>⭐</span> Send 40 science data home to Earth</li>
+          <li><span>⭐</span> Keep radiation under 50%</li>
+        </ul>
+        <p class="pm-label">Your best missions (100 pts per star)</p>
+        <div class="pm-stats">
+          <div><span>🔴 Mars</span><b id="smMars">☆☆☆</b></div>
+          <div><span>🌕 Moon</span><b id="smMoon">☆☆☆</b></div>
+        </div>
+        <a class="pm-play" href="#soon" data-soon>🚀 Earn more stars</a>
+      </div>
+    </div>
+    <div class="profile">
+      <button class="avatar" id="avatarBtn" aria-label="Your profile" aria-haspopup="dialog" aria-expanded="false" aria-controls="profileMenu">
+        <span id="avatarSlot" class="avatar-img"></span>
+        <svg class="chev" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="profile-menu" id="profileMenu" role="dialog" aria-label="Your profile" hidden>
+        <div class="pm-head">
+          <span id="pmAvatar" class="pm-avatar"></span>
+          <div>
+            <p class="pm-hi">Hi, Commander <span id="pmHiName"></span>!</p>
+            <label class="pm-label" for="pmName">Your astronaut name</label>
+            <input id="pmName" maxlength="16" placeholder="Type a name" autocomplete="off">
+          </div>
+        </div>
+        <p class="pm-label">Pick your astronaut</p>
+        <div class="pm-avatars" id="pmAvatars" role="radiogroup" aria-label="Avatar"></div>
+        <p class="pm-label">Your best missions</p>
+        <div class="pm-stats">
+          <div><span>🔴 Mars</span><b id="pmMars">☆☆☆</b></div>
+          <div><span>🌕 Moon</span><b id="pmMoon">☆☆☆</b></div>
+        </div>
+        <a class="pm-play" href="#soon" data-soon>🚀 Play a mission</a>
+        <button class="pm-reset" id="pmReset" type="button">Reset my stars</button>
+        <div class="pm-confirm" id="pmConfirm" hidden>
+          <p>Erase your best Mars and Moon stars on this device? This can't be undone.</p>
+          <div><button type="button" class="pm-yes" id="pmYes">Yes, reset</button><button type="button" class="pm-no" id="pmNo">Keep my stars</button></div>
+        </div>
+        <p class="pm-done" id="pmDone" role="status" hidden>Stars reset. Time for a fresh mission!</p>
+        <p class="pm-note">Saved only on this device. No account needed.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="hero">
+  <section class="copy">
+    <h1><span class="l1">Play, Learn, Explore</span> <span class="pop">Aerospace!<svg class="swoosh" viewBox="0 0 300 20" aria-hidden="true"><path d="M6 14 Q150 0 294 10" stroke="#8b6cff" stroke-width="6" fill="none" stroke-linecap="round"/></svg><svg class="burst" viewBox="0 0 50 50" aria-hidden="true"><path d="M8 14 L30 4" stroke="#b69bff" stroke-width="5" stroke-linecap="round"/><path d="M10 26 L42 24" stroke="#ffb547" stroke-width="5" stroke-linecap="round"/><path d="M10 38 L30 46" stroke="#ff9ad5" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+    <p>Fun games and adventures that teach you about rockets, space, and flight, powered by real NASA data.</p>
+    <a class="cta" href="#soon" data-soon>
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
+      Start Your Mission
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Illustration: astronaut kid reaching for the space station above Earth -->
+  <div class="art" aria-hidden="true">
+    <svg class="earth" viewBox="0 0 600 600">
+      <defs>
+        <radialGradient id="gEarth" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#5cc7ff"/><stop offset=".55" stop-color="#2f6fd6"/><stop offset="1" stop-color="#1b2f80"/></radialGradient>
+        <radialGradient id="gGlow" cx="50%" cy="50%" r="50%"><stop offset=".86" stop-color="#9ad7ff" stop-opacity=".7"/><stop offset="1" stop-color="#9ad7ff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle cx="300" cy="300" r="300" fill="url(#gGlow)"/>
+      <circle cx="300" cy="300" r="262" fill="url(#gEarth)"/>
+      <g fill="#5fbf73" opacity=".9">
+        <path d="M120 170 C170 130 240 150 250 200 C255 240 210 250 190 290 C170 330 120 300 110 260 C100 220 95 190 120 170Z"/>
+        <path d="M330 120 C380 110 430 140 420 180 C410 210 360 200 340 230 C320 260 290 220 300 180 C305 150 310 125 330 120Z"/>
+        <path d="M380 300 C420 290 470 320 460 370 C450 410 400 420 380 390 C360 360 350 310 380 300Z"/>
+      </g>
+      <g fill="#fff" opacity=".75">
+        <ellipse cx="200" cy="140" rx="60" ry="10"/><ellipse cx="400" cy="250" rx="70" ry="11"/><ellipse cx="260" cy="350" rx="55" ry="9"/><ellipse cx="160" cy="420" rx="70" ry="10"/>
+      </g>
+      <circle cx="300" cy="300" r="262" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+    </svg>
+    <div class="sunrise"></div>
+
+    <svg class="iss" viewBox="0 0 320 190">
+      <defs><linearGradient id="gPanel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8fa6ff"/><stop offset="1" stop-color="#4a3fa8"/></linearGradient></defs>
+      <g stroke="#dfe3ff" stroke-width="1.2">
+        <line x1="20" y1="95" x2="300" y2="95" stroke-width="5" stroke="#c9cdf0"/>
+        <g id="arr">
+          <rect x="34" y="12" width="26" height="72" fill="url(#gPanel)"/><rect x="66" y="12" width="26" height="72" fill="url(#gPanel)"/>
+          <rect x="34" y="106" width="26" height="72" fill="url(#gPanel)"/><rect x="66" y="106" width="26" height="72" fill="url(#gPanel)"/>
+        </g>
+        <use href="#arr" x="194"/>
+        <path d="M34 30h58M34 48h58M34 66h58M34 124h58M34 142h58M34 160h58" stroke-opacity=".55"/>
+        <path d="M228 30h58M228 48h58M228 66h58M228 124h58M228 142h58M228 160h58" stroke-opacity=".55"/>
+        <rect x="120" y="80" width="80" height="30" rx="8" fill="#eef0ff"/>
+        <rect x="146" y="60" width="28" height="70" rx="8" fill="#e3e6fb"/>
+        <circle cx="160" cy="95" r="8" fill="#c7cdf5"/>
+      </g>
+    </svg>
+
+    <svg class="kid" viewBox="0 0 520 560">
+      <defs>
+        <linearGradient id="gSuit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cdc3f5"/></linearGradient>
+        <radialGradient id="gGlass" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff" stop-opacity=".18"/><stop offset=".7" stop-color="#9d86ff" stop-opacity=".22"/><stop offset="1" stop-color="#6d4fe0" stop-opacity=".55"/></radialGradient>
+      </defs>
+      <!-- backpack -->
+      <rect x="70" y="300" width="120" height="190" rx="28" fill="#b9aef0"/>
+      <rect x="92" y="330" width="40" height="60" rx="10" fill="#8b6cff"/>
+      <!-- body -->
+      <path d="M120 560 C110 450 150 360 250 340 C340 324 400 380 410 460 L420 560Z" fill="url(#gSuit)"/>
+      <path d="M180 560 C176 470 200 410 250 392" stroke="#7c5cff" stroke-width="16" fill="none" stroke-linecap="round" opacity=".55"/>
+      <!-- reaching arm -->
+      <path d="M330 380 C380 340 420 300 462 238" stroke="url(#gSuit)" stroke-width="66" fill="none" stroke-linecap="round"/>
+      <path d="M408 300 l26 20" stroke="#7c5cff" stroke-width="12" stroke-linecap="round" opacity=".6"/>
+      <g transform="translate(468 222) rotate(-35)">
+        <ellipse cx="0" cy="0" rx="30" ry="24" fill="#eae6ff"/>
+        <rect x="-8" y="-46" width="13" height="30" rx="6.5" fill="#eae6ff"/>
+        <rect x="8" y="-42" width="13" height="28" rx="6.5" fill="#eae6ff"/>
+        <rect x="-24" y="-38" width="13" height="26" rx="6.5" fill="#eae6ff"/>
+        <rect x="22" y="-30" width="12" height="22" rx="6" fill="#eae6ff"/>
+      </g>
+      <!-- chest patch -->
+      <g transform="translate(300 450)">
+        <circle r="30" fill="#2b2160"/><circle r="30" fill="none" stroke="#ff9a52" stroke-width="5"/>
+        <path d="M0 -18 C8 -10 8 4 5 12 L-5 12 C-8 4 -8 -10 0 -18Z" fill="#fff"/>
+        <path d="M-5 12 L0 22 L5 12Z" fill="#ffb547"/>
+      </g>
+      <!-- helmet back -->
+      <circle cx="270" cy="230" r="150" fill="#e8e3ff"/>
+      <circle cx="270" cy="230" r="132" fill="#2e2470"/>
+      <!-- face -->
+      <g>
+        <path d="M168 238 C160 150 220 110 280 112 C350 114 392 160 380 236 C366 200 340 186 300 182 C250 180 200 196 168 238Z" fill="#2b1d3f"/>
+        <ellipse cx="282" cy="262" rx="96" ry="92" fill="#f2b48c"/>
+        <path d="M186 252 C176 156 246 124 298 128 C360 134 394 182 380 244 C372 214 356 200 334 194 C322 214 292 222 264 208 C246 224 214 230 186 252Z" fill="#2b1d3f"/>
+        <path d="M300 136 C330 150 350 170 356 196" stroke="#4a3566" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/>
+        <ellipse cx="190" cy="270" rx="16" ry="22" fill="#e9a37c"/>
+        <ellipse cx="258" cy="260" rx="15" ry="18" fill="#2b1d3f"/><circle cx="263" cy="253" r="5" fill="#fff"/>
+        <ellipse cx="322" cy="256" rx="15" ry="18" fill="#2b1d3f"/><circle cx="327" cy="249" r="5" fill="#fff"/>
+        <ellipse cx="240" cy="296" rx="16" ry="9" fill="#f08f86" opacity=".55"/>
+        <ellipse cx="346" cy="290" rx="16" ry="9" fill="#f08f86" opacity=".55"/>
+        <g fill="#c97a5a"><circle cx="246" cy="286" r="2.2"/><circle cx="256" cy="291" r="2.2"/><circle cx="336" cy="282" r="2.2"/><circle cx="346" cy="278" r="2.2"/></g>
+        <path d="M270 300 Q296 334 326 298 Z" fill="#7a2f3b"/>
+        <path d="M282 316 Q298 324 314 312" stroke="#f06d7a" stroke-width="6" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- glass -->
+      <circle cx="270" cy="230" r="132" fill="url(#gGlass)"/>
+      <path d="M170 170 A120 120 0 0 1 270 104" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round" opacity=".55"/>
+      <circle cx="270" cy="230" r="141" fill="none" stroke="#cfc6ff" stroke-width="18"/>
+      <rect x="112" y="210" width="34" height="56" rx="14" fill="#8b6cff"/>
+    </svg>
+  </div>
+
+  <svg class="moon" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="200" fill="#5b4f86"/>
+    <g fill="#463c6d"><circle cx="120" cy="120" r="34"/><circle cx="250" cy="90" r="18"/><circle cx="220" cy="210" r="46"/><circle cx="90" cy="250" r="24"/><circle cx="310" cy="190" r="14"/></g>
+    <g fill="#6f639c" opacity=".7"><circle cx="112" cy="112" r="34"/><circle cx="244" cy="84" r="18"/><circle cx="212" cy="202" r="46"/></g>
+  </svg>
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="cloud c3" aria-hidden="true"></div>
+
+  <section class="doors" aria-label="Where to go">
+    <a class="door play" href="#soon" data-soon>
+      <svg viewBox="0 0 140 90" aria-hidden="true">
+        <g stroke="#ffcf4a" stroke-width="5" stroke-linecap="round"><path d="M10 26 L20 32"/><path d="M22 10 L27 22"/><path d="M6 44 L18 44"/></g>
+        <path d="M40 30 C40 18 52 14 64 18 L96 18 C108 14 122 18 124 32 L132 64 C134 80 118 84 110 72 L100 60 L60 60 L50 72 C42 84 26 80 28 64Z" fill="#9b7bff"/>
+        <path d="M40 30 C40 18 52 14 64 18 L96 18 C108 14 122 18 124 32 L126 40 C110 30 56 30 38 40Z" fill="#b69bff"/>
+        <path d="M58 32v18M49 41h18" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="104" cy="33" r="5" fill="#3a2a8a"/><circle cx="114" cy="42" r="5" fill="#3a2a8a"/><circle cx="94" cy="42" r="5" fill="#3a2a8a"/><circle cx="104" cy="51" r="5" fill="#3a2a8a"/>
+      </svg>
+      <span>Play Games <i>›</i></span>
+    </a>
+    <a class="door learn" href="#science">
+      <svg viewBox="0 0 140 90" aria-hidden="true">
+        <path d="M18 74 L70 80 L122 74 L122 70 L18 70Z" fill="#7c5cff"/>
+        <path d="M20 16 C38 10 58 12 70 22 L70 76 C58 66 38 64 20 70Z" fill="#f1efff"/>
+        <path d="M120 16 C102 10 82 12 70 22 L70 76 C82 66 102 64 120 70Z" fill="#e4e0ff"/>
+        <g stroke="#a9a2d8" stroke-width="3" stroke-linecap="round"><path d="M32 30h26M32 40h26M32 50h26M82 30h26M82 40h26M82 50h26"/></g>
+      </svg>
+      <span>Learn <i>›</i></span>
+    </a>
+    <a class="door build" href="#soon" data-soon>
+      <svg viewBox="0 0 140 90" aria-hidden="true">
+        <ellipse cx="44" cy="78" rx="26" ry="12" fill="#b69bff"/><ellipse cx="98" cy="78" rx="30" ry="12" fill="#b69bff"/>
+        <g transform="rotate(35 80 44)">
+          <path d="M80 4 C94 16 96 40 90 60 L70 60 C64 40 66 16 80 4Z" fill="#f4f2ff"/>
+          <circle cx="80" cy="30" r="7" fill="#7c5cff"/>
+          <path d="M70 46 L58 64 L70 60Z M90 46 L102 64 L90 60Z" fill="#ff6b8a"/>
+          <path d="M73 60 L80 78 L87 60Z" fill="#ffb547"/>
+        </g>
+      </svg>
+      <span>Build &amp; Create <i>›</i></span>
+    </a>
+  </section>
+</main>
+
+<!-- ================= TRADE-OFFS ================= -->
+<section class="sec alt" id="tradeoffs">
+  <div class="wrap">
+    <span class="eyebrow center">The big idea</span>
+    <h2 class="center">Every choice costs something</h2>
+    <p class="lead center narrow">Real mission planners never get everything they want. Neither will you. Here are the five things you'll juggle, and the real trade-off behind each one.</p>
+    <div class="grid5">
+      <article class="tcard"><div class="ti">🫁</div><h3>Life support</h3><p>Each person breathes about 0.84 kg of oxygen a day. Making air takes power, so every watt spent on science is air you didn't make.</p></article>
+      <article class="tcard"><div class="ti">⚡</div><h3>Power</h3><p>Mars gets only 43% of Earth's sunlight, and a dust storm can cut it to almost nothing. You decide what stays on tonight.</p></article>
+      <article class="tcard"><div class="ti">🛡️</div><h3>Radiation</h3><p>Building shielding protects you forever, but it costs tonight's battery. Sheltering from a storm is safe, but it stops all work.</p></article>
+      <article class="tcard"><div class="ti">🌱</div><h3>Food</h3><p>Plants need power every day, and food you plant today won't be ready for days. Save power now, go hungry later.</p></article>
+      <article class="tcard"><div class="ti">📡</div><h3>Distance</h3><p>Earth can be 20+ light-minutes away. Sometimes asking for help is smart. In an emergency, the answer comes too late.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <span class="eyebrow center">How a mission plays</span>
+    <h2 class="center">Read. Decide. Live with it.</h2>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>Something happens</h3><p>A leak, a solar flare, a dust storm, a strange rock. Each chapter starts with a moment that needs a leader.</p></li>
+      <li><span class="n">2</span><h3>Check your meters</h3><p>Air, power and radiation tell you what you can afford. Every option shows its cost before you pick it.</p></li>
+      <li><span class="n">3</span><h3>Open the Rulebook… or don't</h3><p>Ask Earth for advice if there's time, or follow the Commander's rules. Or trust your gut.</p></li>
+      <li><span class="n">4</span><h3>See what happens</h3><p>Your choices follow you. A shortcut in Chapter 1 can catch up with you in Chapter 5.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= RULEBOOK ================= -->
+<section class="sec alt" id="rulebook">
+  <div class="wrap two rev">
+    <div class="book" aria-label="Pages from the Commander's Rulebook">
+      <div class="page left">
+        <h4>Commander's Rulebook</h4>
+        <ol>
+          <li>Air first, then heat, then talk, then food, then science.</li>
+          <li>Emergency? Checklist first, then tell Earth.</li>
+          <li>Radiation warning means shelter. No exceptions.</li>
+          <li>Never go outside alone.</li>
+          <li>Keep a reserve: never below 30%.</li>
+        </ol>
+      </div>
+      <div class="page right">
+        <ol start="6">
+          <li>Charge up before the dark.</li>
+          <li>Check in with Earth every sol.</li>
+          <li>Quarantine anything sick.</li>
+          <li>When there's time, ask.</li>
+          <li>Science never beats safety.</li>
+        </ol>
+        <p class="sig">— A. Rivera</p>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">20 endings · 2 are the best</span>
+      <h2>The Rulebook was written the hard way</h2>
+      <p class="lead">Every rule comes from something real: the buddy system on NASA spacewalks, the storm shelters on the Space Station, and the dust storm that ended the Opportunity rover in 2018.</p>
+      <p>Following the rules isn't always the exciting choice. Sometimes it means losing a whole day, or watching a discovery sit just out of reach. But only players who follow the book <b>and</b> manage their meters well reach the two best endings.</p>
+      <div class="endings">
+        <span class="e best">🏆 2 best</span><span class="e good">⭐ 5 complete</span><span class="e cut">🚀 7 cut short</span><span class="e fail">❌ 6 failures</span>
+      </div>
+      <p class="small">Nobody dies in AeroPlay. When things go wrong, the crew is rescued, and the game shows exactly which choice led there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISSION CONTROL: LIVE NASA DATA ================= -->
+<section class="sec" id="science">
+  <div class="wrap">
+    <span class="eyebrow center">Learn · real NASA data</span>
+    <h2 class="center">Mission Control: Space Today</h2>
+    <p class="lead center narrow">This is what mission planners check every day. Everything on this board comes from NASA, most of it live right now.</p>
+    <p class="mc-updated center">Checked <span id="mcUpdated">…</span> · <button type="button" id="mcRefresh" class="mc-refresh">↻ Check again</button></p>
+
+    <div class="mc-grid">
+      <article class="mc-panel span2">
+        <header><h3>☀️ The Sun this week</h3><span class="chip live">LIVE · NASA DONKI</span></header>
+        <div id="mcSun"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+      <article class="mc-panel">
+        <header><h3>💥 Eruptions on the move</h3><span class="chip live">LIVE · NASA DONKI model</span></header>
+        <p class="mc-intro">NASA's computer model predicts where each solar eruption will hit.</p>
+        <div id="mcEnlil"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+
+      <article class="mc-panel">
+        <header><h3>📡 Latest NASA alert</h3><span class="chip live">LIVE · NASA DONKI</span></header>
+        <div id="mcAlert"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+      <article class="mc-panel">
+        <header><h3>🌡️ Weather on Mars</h3><span class="chip live">LIVE · Curiosity rover</span></header>
+        <p class="mc-intro">The latest report Curiosity has sent home.</p>
+        <div id="mcMars"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+      <article class="mc-panel">
+        <header><h3>📸 Newest photo from Mars</h3><span class="chip live">LIVE · Perseverance rover</span></header>
+        <div id="mcPhoto"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+
+      <article class="mc-panel span2">
+        <header><h3>🪐 How far is Mars today?</h3><span class="chip">NASA JPL Horizons · saved table</span></header>
+        <div id="mcDist"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+      <article class="mc-panel">
+        <header><h3>🌍 Your home, from a million miles</h3><span class="chip live">LIVE · NASA EPIC</span></header>
+        <div id="mcEpic"><p class="mc-loading">Asking NASA…</p></div>
+      </article>
+    </div>
+
+    <h3 class="bio-title center">🧬 Real experiments from space</h3>
+    <p class="center mc-intro">Studies from NASA's Open Science Data Repository (OSDR), saved Nov 2026.</p>
+    <div class="bio-grid" id="mcBio"></div>
+  </div>
+</section>
+
+<!-- ================= PARENTS & TEACHERS ================= -->
+<section class="sec alt" id="teachers">
+  <div class="wrap">
+    <span class="eyebrow center">For parents &amp; teachers</span>
+    <h2 class="center">Made for curious kids, ready for classrooms</h2>
+    <div class="grid4">
+      <article class="pcard"><h3>Ages 7–12</h3><p>Short sentences, a word helper for tricky terms like <i>sol</i> and <i>radiation dose</i>, and a "Read to me" button.</p></article>
+      <article class="pcard"><h3>No sign-up</h3><p>No accounts, no ads, no downloads. It runs in any modern browser on laptops, tablets and Chromebooks.</p></article>
+      <article class="pcard"><h3>10-minute missions</h3><p>One playthrough fits a lesson warm-up. Replays show how different choices lead to different endings.</p></article>
+      <article class="pcard"><h3>Talk about it</h3><p>Every ending shows the path you took and the real science behind each rule, ready for a class discussion.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="sec" id="crew">
+  <div class="wrap">
+    <span class="eyebrow center">My Crew</span>
+    <h2 class="center">The team behind AeroPlay</h2>
+    <p class="lead center narrow">We're a small team who loves space and believes kids learn best by making real decisions.</p>
+    <div class="team">
+      <article class="member"><div class="av" style="--c:#8b6cff">SS</div><h3>Sana Saleem</h3><p class="role">Team Leader</p></article>
+      <article class="member"><div class="av" style="--c:#22b8cf">AN</div><h3>Ali Nazar</h3><p class="role">Designer · Storyteller</p></article>
+      <article class="member"><div class="av" style="--c:#ff6b9a">N</div><h3>Noor</h3><p class="role">Story Designer · Frontend Designer</p></article>
+      <article class="member"><div class="av" style="--c:#ff8a5c">P</div><h3>Pehlaj</h3><p class="role">AI Full Stack Engineer</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec alt" id="faq">
+  <div class="wrap narrow-wrap">
+    <h2 class="center">Questions</h2>
+    <details><summary>Is the data really from NASA?</summary><p>Yes. Solar flares and radiation storms come from NASA's DONKI database (live when you're online, from a saved archive when you're not). The game always shows which one you're seeing. Mars weather, radiation and biology facts come from NASA missions and the Open Science Data Repository.</p></details>
+    <details><summary>Can my child lose?</summary><p>Yes, and that's part of the learning. Missions can end early, but nobody dies. The crew is rescued, and the ending explains which choice caused it so kids can try again.</p></details>
+    <details><summary>Do we need to install anything?</summary><p>No. AeroPlay runs in the browser. There's no account and no personal data collected.</p></details>
+    <details><summary>Is AeroPlay made by NASA?</summary><p>No. AeroPlay is an independent project that uses NASA's free, public open data. It is not affiliated with or endorsed by NASA.</p></details>
+  </div>
+</section>
+
+
+
+<dialog class="soon" id="soonDlg" aria-labelledby="soonTitle">
+  <div class="soon-ic" aria-hidden="true">🚀</div>
+  <h2 id="soonTitle">Missions are launching soon!</h2>
+  <p>Our crew is putting the finishing touches on the game. Soon you'll command your own Mars outpost with real NASA data.</p>
+  <p class="soon-sub">Until then, read <a href="#tradeoffs" data-close>how a mission works</a> and the <a href="#rulebook" data-close>Commander's Rulebook</a>.</p>
+  <button type="button" class="cta small" data-close>Got it!</button>
+</dialog>
+
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div>
+      <div class="flogo">Aero<b>Play</b></div>
+      <p>Play, learn and explore aerospace with real NASA open data.</p>
+    </div>
+    <div><h4>Play</h4><a href="#soon" data-soon>Missions (coming soon)</a></div>
+    <div><h4>Learn</h4><a href="#tradeoffs">Trade-offs</a><a href="#rulebook">The Rulebook</a><a href="#science">NASA data</a></div>
+    <div><h4>About</h4><a href="#crew">Our team</a><a href="#teachers">For teachers</a><a href="#faq">FAQ</a></div>
+  </div>
+  <p class="legal">Data and images: NASA DONKI (CCMC), NASA OSDR, Curiosity &amp; Perseverance (NASA/JPL-Caltech), LRO (NASA/GSFC/ASU), JPL Horizons. AeroPlay is an independent project and is not affiliated with or endorsed by NASA.</p>
+</footer>
+
+<script>
+  // ---------- Profile: name, avatar and stars, saved on this device only ----------
+  (function () {
+    const AVATARS = [
+      { bg: "#8b6cff", skin: "#f4b88f", hair: "#2b1d3f" },
+      { bg: "#22b8cf", skin: "#c68863", hair: "#1d1410" },
+      { bg: "#ff8a5c", skin: "#ffd8b8", hair: "#e0a33a" },
+      { bg: "#ff6b9a", skin: "#8d5a3b", hair: "#120c0a" },
+      { bg: "#3ddc97", skin: "#f1c19b", hair: "#7a3b1e" },
+      { bg: "#ffcf4a", skin: "#a8714f", hair: "#3b2a6b" },
+    ];
+    const get = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
+    const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+    const svg = (a, size) => `<svg viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="${a.bg}"/><circle cx="32" cy="36" r="17" fill="${a.skin}"/><path d="M14 34 C12 16 26 10 34 12 C46 12 52 22 50 34 C46 26 40 22 30 23 C24 24 18 28 14 34Z" fill="${a.hair}"/><circle cx="26" cy="37" r="2.2" fill="#2b1d3f"/><circle cx="38" cy="37" r="2.2" fill="#2b1d3f"/><path d="M26 44 Q32 49 38 44" stroke="#2b1d3f" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M14 64 C14 54 22 50 32 50 C42 50 50 54 50 64Z" fill="#fff"/></svg>`;
+    const $ = (id) => document.getElementById(id);
+    const btn = $("avatarBtn"), menu = $("profileMenu"), nameIn = $("pmName");
+    const starsTxt = (n) => "⭐".repeat(n) + "☆".repeat(3 - n);
+
+    function render() {
+      const a = AVATARS[get("ap_avatar", 0)] || AVATARS[0];
+      const name = get("ap_name", "");
+      $("avatarSlot").innerHTML = svg(a, 62);
+      $("pmAvatar").innerHTML = svg(a, 64);
+      $("pmHiName").textContent = name || "Rookie";
+      btn.setAttribute("aria-label", "Your profile" + (name ? ": " + name : ""));
+      $("pmAvatars").innerHTML = AVATARS.map((x, i) => `<button type="button" role="radio" aria-checked="${i === get("ap_avatar", 0)}" aria-label="Astronaut ${i + 1}" data-av="${i}">${svg(x, 44)}</button>`).join("");
+      $("pmAvatars").querySelectorAll("[data-av]").forEach((b) => b.onclick = () => { set("ap_avatar", +b.dataset.av); render(); });
+      const mars = get("oc_best_mars", 0), moon = get("oc_best_moon", 0);
+      $("pmMars").textContent = starsTxt(mars);
+      $("pmMoon").textContent = starsTxt(moon);
+      const pts = (mars + moon) * 100;
+      $("starCount").textContent = pts;
+      $("smPoints").textContent = pts;
+      $("smMars").textContent = starsTxt(mars);
+      $("smMoon").textContent = starsTxt(moon);
+      const RANKS = [[0, "Rookie", "🧑‍🚀"], [100, "Cadet", "🛰️"], [300, "Flight Specialist", "🚀"], [500, "Commander", "🌟"], [600, "Mission Legend", "🏆"]];
+      let i = 0; while (i + 1 < RANKS.length && pts >= RANKS[i + 1][0]) i++;
+      const r = RANKS[i], next = RANKS[i + 1];
+      $("smRank").textContent = r[1]; $("smBadge").textContent = r[2];
+      $("smBar").style.width = next ? ((pts - r[0]) / (next[0] - r[0]) * 100) + "%" : "100%";
+      $("smNext").textContent = next ? `${next[0] - pts} more points to become ${next[1]} ${next[2]}` : "Top rank! You've earned every star on Mars and the Moon.";
+      $("starsBtn").setAttribute("aria-label", `Your stars: ${pts} points, rank ${r[1]}`);
+    }
+    const sBtn = $("starsBtn"), sMenu = $("starsMenu");
+    function open(v) {
+      menu.hidden = !v; btn.setAttribute("aria-expanded", v);
+      if (!v) { $("pmConfirm").hidden = true; $("pmReset").hidden = false; $("pmDone").hidden = true; }
+      if (v) { openStars(false); nameIn.value = get("ap_name", ""); nameIn.focus(); }
+    }
+    function openStars(v) {
+      sMenu.hidden = !v; sBtn.setAttribute("aria-expanded", v);
+      if (v) { open(false); render(); }
+    }
+    btn.addEventListener("click", (e) => { e.stopPropagation(); open(menu.hidden); });
+    sBtn.addEventListener("click", (e) => { e.stopPropagation(); openStars(sMenu.hidden); });
+    [menu, sMenu].forEach((m) => m.addEventListener("click", (e) => e.stopPropagation()));
+    document.addEventListener("click", () => { open(false); openStars(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!menu.hidden) { open(false); btn.focus(); }
+      if (!sMenu.hidden) { openStars(false); sBtn.focus(); }
+    });
+    nameIn.addEventListener("input", () => { set("ap_name", nameIn.value.trim().slice(0, 16)); render(); nameIn.focus(); });
+    // Reset asks inside the menu (no browser pop-up), then confirms what happened.
+    const showConfirm = (v) => { $("pmConfirm").hidden = !v; $("pmReset").hidden = v; if (v) { $("pmDone").hidden = true; $("pmNo").focus(); } };
+    $("pmReset").addEventListener("click", () => showConfirm(true));
+    $("pmNo").addEventListener("click", () => { showConfirm(false); $("pmReset").focus(); });
+    $("pmYes").addEventListener("click", () => {
+      try { localStorage.removeItem("oc_best_mars"); localStorage.removeItem("oc_best_moon"); } catch (e) {}
+      showConfirm(false); render(); $("pmDone").hidden = false; $("pmReset").focus();
+    });
+    render();
+  })();
+  // "Coming soon" for every Play button while the game is offline.
+  (function () {
+    const dlg = document.getElementById("soonDlg");
+    document.querySelectorAll("[data-soon]").forEach((a) => a.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelectorAll(".profile-menu").forEach((m) => (m.hidden = true));
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    }));
+    dlg.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", () => dlg.close()));
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  })();
+  const btn = document.getElementById("menuBtn"), links = document.getElementById("navLinks");
+  btn.addEventListener("click", () => { const open = links.classList.toggle("open"); btn.setAttribute("aria-expanded", open); });
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { links.classList.remove("open"); btn.setAttribute("aria-expanded", false); }));
+
+
+</script>
+<script src="data/horizons_mars.js"></script>
+<script src="data/osdr_cards.js"></script>
+<script src="learn.js"></script>
+</body>
+</html>

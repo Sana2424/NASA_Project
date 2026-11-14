@@ -1,0 +1,10 @@
+# Only the homepage and the files it uses are published. Everything else stays on this computer.
+/*
+!index.html
+!home.css
+!learn.js
+!vercel.json
+!data
+data/*
+!data/horizons_mars.js
+!data/osdr_cards.js

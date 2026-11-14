@@ -1,0 +1,9 @@
+# Secrets: never commit these
+config.js
+.env*
+.vercel
+
+# Local tooling
+.claude/
+.DS_Store
+node_modules/
