@@ -1,10 +1,16 @@
-# Only the homepage and the files it uses are published. Everything else stays on this computer.
+# Published: the homepage, the Outpost Commander game, and the files they use.
+# config.js (personal NASA API key) is never published; the game falls back to NASA's public DEMO_KEY.
 /*
 !index.html
 !home.css
 !learn.js
+!outpost.html
+!game.js
+!style.css
 !vercel.json
+!assets
 !data
 data/*
 !data/horizons_mars.js
 !data/osdr_cards.js
+!data/donki_archive.js

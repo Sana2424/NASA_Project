@@ -41,7 +41,7 @@
   </button>
   <nav class="links" id="navLinks" aria-label="Main">
     <a href="index.html" class="active" aria-current="page">Home</a>
-    <a href="#soon" data-soon>Games</a>
+    <a href="outpost.html">Games</a>
     <a href="#science">Learn</a>
     <a href="#crew" class="crew">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="16.5" cy="9" r="2.6"/><path d="M15.5 13.6c3 0 5.5 2 5.5 5"/></g></svg>
@@ -70,7 +70,7 @@
           <div><span>🔴 Mars</span><b id="smMars">☆☆☆</b></div>
           <div><span>🌕 Moon</span><b id="smMoon">☆☆☆</b></div>
         </div>
-        <a class="pm-play" href="#soon" data-soon>🚀 Earn more stars</a>
+        <a class="pm-play" href="outpost.html">🚀 Earn more stars</a>
       </div>
     </div>
     <div class="profile">
@@ -94,7 +94,7 @@
           <div><span>🔴 Mars</span><b id="pmMars">☆☆☆</b></div>
           <div><span>🌕 Moon</span><b id="pmMoon">☆☆☆</b></div>
         </div>
-        <a class="pm-play" href="#soon" data-soon>🚀 Play a mission</a>
+        <a class="pm-play" href="outpost.html">🚀 Play a mission</a>
         <button class="pm-reset" id="pmReset" type="button">Reset my stars</button>
         <div class="pm-confirm" id="pmConfirm" hidden>
           <p>Erase your best Mars and Moon stars on this device? This can't be undone.</p>
@@ -111,7 +111,7 @@
   <section class="copy">
     <h1><span class="l1">Play, Learn, Explore</span> <span class="pop">Aerospace!<svg class="swoosh" viewBox="0 0 300 20" aria-hidden="true"><path d="M6 14 Q150 0 294 10" stroke="#8b6cff" stroke-width="6" fill="none" stroke-linecap="round"/></svg><svg class="burst" viewBox="0 0 50 50" aria-hidden="true"><path d="M8 14 L30 4" stroke="#b69bff" stroke-width="5" stroke-linecap="round"/><path d="M10 26 L42 24" stroke="#ffb547" stroke-width="5" stroke-linecap="round"/><path d="M10 38 L30 46" stroke="#ff9ad5" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
     <p>Fun games and adventures that teach you about rockets, space, and flight, powered by real NASA data.</p>
-    <a class="cta" href="#soon" data-soon>
+    <a class="cta" href="outpost.html">
       <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
       Start Your Mission
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -219,7 +219,7 @@
   <div class="cloud c3" aria-hidden="true"></div>
 
   <section class="doors" aria-label="Where to go">
-    <a class="door play" href="#soon" data-soon>
+    <a class="door play" href="outpost.html">
       <svg viewBox="0 0 140 90" aria-hidden="true">
         <g stroke="#ffcf4a" stroke-width="5" stroke-linecap="round"><path d="M10 26 L20 32"/><path d="M22 10 L27 22"/><path d="M6 44 L18 44"/></g>
         <path d="M40 30 C40 18 52 14 64 18 L96 18 C108 14 122 18 124 32 L132 64 C134 80 118 84 110 72 L100 60 L60 60 L50 72 C42 84 26 80 28 64Z" fill="#9b7bff"/>
@@ -238,7 +238,7 @@
       </svg>
       <span>Learn <i>›</i></span>
     </a>
-    <a class="door build" href="#soon" data-soon>
+    <a class="door build" href="outpost.html">
       <svg viewBox="0 0 140 90" aria-hidden="true">
         <ellipse cx="44" cy="78" rx="26" ry="12" fill="#b69bff"/><ellipse cx="98" cy="78" rx="30" ry="12" fill="#b69bff"/>
         <g transform="rotate(35 80 44)">
@@ -412,13 +412,6 @@
 
 
 
-<dialog class="soon" id="soonDlg" aria-labelledby="soonTitle">
-  <div class="soon-ic" aria-hidden="true">🚀</div>
-  <h2 id="soonTitle">Missions are launching soon!</h2>
-  <p>Our crew is putting the finishing touches on the game. Soon you'll command your own Mars outpost with real NASA data.</p>
-  <p class="soon-sub">Until then, read <a href="#tradeoffs" data-close>how a mission works</a> and the <a href="#rulebook" data-close>Commander's Rulebook</a>.</p>
-  <button type="button" class="cta small" data-close>Got it!</button>
-</dialog>
 
 <footer class="site-foot">
   <div class="wrap fgrid">
@@ -426,7 +419,7 @@
       <div class="flogo">Aero<b>Play</b></div>
       <p>Play, learn and explore aerospace with real NASA open data.</p>
     </div>
-    <div><h4>Play</h4><a href="#soon" data-soon>Missions (coming soon)</a></div>
+    <div><h4>Play</h4><a href="outpost.html">Outpost Commander</a></div>
     <div><h4>Learn</h4><a href="#tradeoffs">Trade-offs</a><a href="#rulebook">The Rulebook</a><a href="#science">NASA data</a></div>
     <div><h4>About</h4><a href="#crew">Our team</a><a href="#teachers">For teachers</a><a href="#faq">FAQ</a></div>
   </div>
@@ -505,17 +498,6 @@
       showConfirm(false); render(); $("pmDone").hidden = false; $("pmReset").focus();
     });
     render();
-  })();
-  // "Coming soon" for every Play button while the game is offline.
-  (function () {
-    const dlg = document.getElementById("soonDlg");
-    document.querySelectorAll("[data-soon]").forEach((a) => a.addEventListener("click", (e) => {
-      e.preventDefault();
-      document.querySelectorAll(".profile-menu").forEach((m) => (m.hidden = true));
-      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
-    }));
-    dlg.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", () => dlg.close()));
-    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
   })();
   const btn = document.getElementById("menuBtn"), links = document.getElementById("navLinks");
   btn.addEventListener("click", () => { const open = links.classList.toggle("open"); btn.setAttribute("aria-expanded", open); });
